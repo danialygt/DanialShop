@@ -1,0 +1,73 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200915134526_makeDb.cs" />
+    <Compile Remove="Migrations\20200915134526_makeDb.Designer.cs" />
+    <Compile Remove="Migrations\20200915134723_makeDb2.cs" />
+    <Compile Remove="Migrations\20200915134723_makeDb2.Designer.cs" />
+    <Compile Remove="Migrations\20200915135312_initial.cs" />
+    <Compile Remove="Migrations\20200915135312_initial.Designer.cs" />
+    <Compile Remove="Migrations\20200915145254_initial2.cs" />
+    <Compile Remove="Migrations\20200915145254_initial2.Designer.cs" />
+    <Compile Remove="Migrations\20200915150838_initial3.cs" />
+    <Compile Remove="Migrations\20200915150838_initial3.Designer.cs" />
+    <Compile Remove="Migrations\20200919113849_inital4.cs" />
+    <Compile Remove="Migrations\20200919113849_inital4.Designer.cs" />
+    <Compile Remove="Migrations\20200919114037_initial5.cs" />
+    <Compile Remove="Migrations\20200919114037_initial5.Designer.cs" />
+    <Compile Remove="Migrations\20200919114211_initial6.cs" />
+    <Compile Remove="Migrations\20200919114211_initial6.Designer.cs" />
+    <Compile Remove="Migrations\20200919114312_initial4.cs" />
+    <Compile Remove="Migrations\20200919114312_initial4.Designer.cs" />
+    <Compile Remove="Migrations\20200919114502_initial4.cs" />
+    <Compile Remove="Migrations\20200919114502_initial4.Designer.cs" />
+    <Compile Remove="Migrations\20200919115200_initial5.cs" />
+    <Compile Remove="Migrations\20200919115200_initial5.Designer.cs" />
+    <Compile Remove="Migrations\20200919115255_initial5.cs" />
+    <Compile Remove="Migrations\20200919115255_initial5.Designer.cs" />
+    <Compile Remove="Migrations\20200919120116_initial5.cs" />
+    <Compile Remove="Migrations\20200919120116_initial5.Designer.cs" />
+    <Compile Remove="Migrations\20200919120141_initial5.cs" />
+    <Compile Remove="Migrations\20200919120141_initial5.Designer.cs" />
+    <Compile Remove="Migrations\20200919120336_initial5.cs" />
+    <Compile Remove="Migrations\20200919120336_initial5.Designer.cs" />
+    <Compile Remove="Migrations\20200919120402_initial5.cs" />
+    <Compile Remove="Migrations\20200919120402_initial5.Designer.cs" />
+    <Compile Remove="Migrations\20200919120452_initial5.cs" />
+    <Compile Remove="Migrations\20200919120452_initial5.Designer.cs" />
+    <Compile Remove="Migrations\20200919120550_initial5.cs" />
+    <Compile Remove="Migrations\20200919120550_initial5.Designer.cs" />
+    <Compile Remove="Migrations\20200919120633_initial5.cs" />
+    <Compile Remove="Migrations\20200919120633_initial5.Designer.cs" />
+    <Compile Remove="Migrations\20200919120929_initial5.cs" />
+    <Compile Remove="Migrations\20200919120929_initial5.Designer.cs" />
+    <Compile Remove="Migrations\20200919121030_initial5.cs" />
+    <Compile Remove="Migrations\20200919121030_initial5.Designer.cs" />
+    <Compile Remove="Migrations\20200919121057_initial5.cs" />
+    <Compile Remove="Migrations\20200919121057_initial5.Designer.cs" />
+    <Compile Remove="Migrations\20200919122020_initial.cs" />
+    <Compile Remove="Migrations\20200919122020_initial.Designer.cs" />
+    <Compile Remove="Migrations\20200919122138_initial.cs" />
+    <Compile Remove="Migrations\20200919122138_initial.Designer.cs" />
+    <Compile Remove="Migrations\20200919122323_initial2.cs" />
+    <Compile Remove="Migrations\20200919122323_initial2.Designer.cs" />
+    <Compile Remove="Migrations\20200919122949_initial.cs" />
+    <Compile Remove="Migrations\20200919122949_initial.Designer.cs" />
+    <Compile Remove="Migrations\20200919123342_initial2.cs" />
+    <Compile Remove="Migrations\20200919123342_initial2.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Shop.Domain.Core\Shop.Core.Domain.csproj" />
+    <ProjectReference Include="..\..\Framework\Shop.Framework\Shop.Framework.csproj" />
+  </ItemGroup>
+
+</Project>

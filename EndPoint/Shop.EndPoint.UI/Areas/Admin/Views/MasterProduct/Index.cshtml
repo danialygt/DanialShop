@@ -1,0 +1,53 @@
+﻿@model List<Shop.Core.Domain.Masters.Entities.MasterProduct>
+@inject IResourceManager _resourceManager
+@{
+    ViewData["Title"] = _resourceManager[SharedResource.MasterProducts];
+}
+
+<div class="container py-4">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <i class="fa fa-save"></i>
+                @_resourceManager[SharedResource.MasterProducts]
+            </h5>
+        </div>
+        <div class="card-body">
+            @if (Model.Any())
+            {
+                <table class="table table-bordered table-secondary ">
+                    <thead>
+                        <tr>
+                            <th>@_resourceManager[SharedResource.ProductName]</th>
+                            <th>@_resourceManager[SharedResource.Master]</th>
+                            <th>@_resourceManager[SharedResource.CategoryName]</th>
+                            <th>@_resourceManager[SharedResource.Price]</th>
+                            <th>@_resourceManager[SharedResource.Discount]</th>
+                            <th>@_resourceManager[SharedResource.ShortDescription]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Master.FirstName @item.Master.LastName</td>
+                                <td>@item.Category.Name</td>
+                                <td>@item.Price</td>
+                                <td>@item.Discount</td>
+                                <td>@item.ShortDescription</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+        <span>@_resourceManager[SharedResource.NoDate]</span>
+            }
+        </div>
+    </div>
+</div>
+
+
+

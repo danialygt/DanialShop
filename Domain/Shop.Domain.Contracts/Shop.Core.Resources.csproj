@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\Resources.SharedResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.SharedResource.en-US</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\Resources.SharedResource.en-US">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.SharedResource.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>
