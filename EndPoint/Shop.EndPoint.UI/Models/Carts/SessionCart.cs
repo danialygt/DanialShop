@@ -26,16 +26,16 @@ namespace Shop.EndPoints.WebUI.Models.Carts
 
 
 
-        public override void AddItem(DtoProduct product, int quantity)
+        public override void AddItem(DtoProductDetail product, int quantity)
         {
             base.AddItem(product, quantity);
             session.SetJson("Cart", this);
 
         }
 
-        public override void RemoveLine(DtoProduct product, int quantity)
+        public override void RemoveLine(DtoProductDetail product)
         {
-            base.RemoveLine(product, quantity);
+            base.RemoveLine(product);
             session.SetJson("Cart", this);
             ////////
 

@@ -36,7 +36,7 @@ namespace Shop.EndPoints.WebUI.Areas.Admin.Controllers
             var viewModel = new AddMasterProductViewModel
             {
                 Categories = _queryDispatcher.Dispatch<List<Category>>(new GetAllCategoryQuery()),
-                Masters = _queryDispatcher.Dispatch<List<Master>>(new GetAllMasterQuery())
+                Masters = _queryDispatcher.Dispatch<List<DtoMaster>>(new GetAllMasterQuery())
             };
 
             return View(viewModel);

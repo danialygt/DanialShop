@@ -29,26 +29,35 @@ namespace Shop.EndPoints.WebUI.Controllers
         }
 
 
-        public ViewResult Index (string returnUrl)
+        public ViewResult Index (string returnToUrl)
         {
             return View(new CartIndexViewModel
             {
                 Cart = _cart,
-                ReturnUrl = returnUrl
+                ReturnUrl = returnToUrl
             });
         }
        
         [HttpPost]
         public RedirectToActionResult AddToCart (int productId, string retutnUrl)
         {
-            var product = _queryDispatcher.Dispatch<DtoProduct>(new GetByIdMasterProductQuery() { ProductId = productId});
+            var product = _queryDispatcher.Dispatch<DtoProductDetail>(new GetByIdMasterProductQuery() { ProductId = productId});
             if (product != null)
             {
                 _cart.AddItem(product, 1);
             }
-            return RedirectToAction("Index", new { retutnUrl });
+            return RedirectToAction("Index", new { returnToUrl = retutnUrl });
         }
-        
+
+        public RedirectToActionResult RemoveFromCart(int productId, string returnUrl)
+        {
+            var product = _queryDispatcher.Dispatch<DtoProductDetail>(new GetByIdMasterProductQuery { ProductId = productId });
+            if (product != null)
+            {
+                _cart.RemoveLine(product);
+            }
+            return RedirectToAction("Index", new { returnToUrl = returnUrl });
+        }
 
     }
 }

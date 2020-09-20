@@ -5,10 +5,7 @@ using Shop.Core.Domain.Orders.Repositories;
 using Shop.Core.Resources.Resources;
 using Shop.Framework.Commands;
 using Shop.Framework.Resources;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Shop.Core.ApplicationService.Orders.Commands
 {
@@ -29,9 +26,10 @@ namespace Shop.Core.ApplicationService.Orders.Commands
                 order.OrderLines = command.Cart.Lines.Select(c => new OrderLine
                 {
                     Count = c.Quantity,
-                    MasterProductsId = c.Product.Id,
+                    MasterProductId = c.Product.Id,
                     Price = c.Product.Price,
                     Discount = c.Product.Discount
+
 
                 }).ToList();
                 order.Customer = new Customer
@@ -44,8 +42,10 @@ namespace Shop.Core.ApplicationService.Orders.Commands
                     Phone = command.Phone,
                     Provience = command.Provience
                 };
+
                 _orderCommandRepository.Add(order);
                 command.OrderId = order.Id;
+                command.Cart.Clear();
                 return Ok();
             }
             return Failure();
@@ -59,6 +59,42 @@ namespace Shop.Core.ApplicationService.Orders.Commands
                 AddError(SharedResource.CartIsEmpty);
                 isValid = false;
             }
+            if (string.IsNullOrEmpty(command.FirstName) || command.FirstName.Length > 50)
+            {
+                AddError(SharedResource.FirstName);
+                isValid = false;
+            }
+            if (string.IsNullOrEmpty(command.LastName) || command.LastName.Length > 50)
+            {
+                AddError(SharedResource.LastName);
+                isValid = false;
+            }
+            if (string.IsNullOrEmpty(command.NationalCode) || command.NationalCode.Length > 10)
+            {
+                AddError(SharedResource.NationalCode);
+                isValid = false;
+            }
+            if (command.Provience.Length > 50)
+            {
+                AddError(SharedResource.Provience);
+                isValid = false;
+            }
+            if (command.City.Length > 50)
+            {
+                AddError(SharedResource.City);
+                isValid = false;
+            }
+            if (command.Phone.Length > 20)
+            {
+                AddError(SharedResource.Phone);
+                isValid = false;
+            }
+            if (command.Address.Length > 256)
+            {
+                AddError(SharedResource.Address);
+                isValid = false;
+            }
+
             return isValid;
         }
     }

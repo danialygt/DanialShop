@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Shop.Infrastructure.Data.SqlServer;
 
 namespace Shop.Infrastructure.Data.SqlServer.Migrations
 {
     [DbContext(typeof(ShopDbContext))]
-    partial class ShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200920155429_changeOrderEntities")]
+    partial class changeOrderEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -209,7 +211,10 @@ namespace Shop.Infrastructure.Data.SqlServer.Migrations
                     b.Property<long>("Discount")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("MasterProductId")
+                    b.Property<long?>("MasterProductId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("MasterProductsId")
                         .HasColumnType("bigint");
 
                     b.Property<long>("OrderId")
@@ -322,9 +327,7 @@ namespace Shop.Infrastructure.Data.SqlServer.Migrations
                 {
                     b.HasOne("Shop.Core.Domain.Masters.Entities.MasterProduct", "MasterProduct")
                         .WithMany()
-                        .HasForeignKey("MasterProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MasterProductId");
 
                     b.HasOne("Shop.Core.Domain.Orders.Entities.Order", "Order")
                         .WithMany("OrderLines")

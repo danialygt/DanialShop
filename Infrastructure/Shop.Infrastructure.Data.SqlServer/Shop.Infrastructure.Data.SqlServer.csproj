@@ -59,6 +59,12 @@
     <Compile Remove="Migrations\20200919122949_initial.Designer.cs" />
     <Compile Remove="Migrations\20200919123342_initial2.cs" />
     <Compile Remove="Migrations\20200919123342_initial2.Designer.cs" />
+    <Compile Remove="Migrations\20200920154536_changeOrderEntities.cs" />
+    <Compile Remove="Migrations\20200920154536_changeOrderEntities.Designer.cs" />
+    <Compile Remove="Migrations\20200920171255_addOrderToDbContext.cs" />
+    <Compile Remove="Migrations\20200920171255_addOrderToDbContext.Designer.cs" />
+    <Compile Remove="Migrations\20200920175041_addOrderToDbContext.cs" />
+    <Compile Remove="Migrations\20200920175041_addOrderToDbContext.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

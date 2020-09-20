@@ -8,7 +8,7 @@ namespace Shop.Core.Domain.Carts
     public class Cart
     {
         private List<CartLine> lineCollection = new List<CartLine>();
-        public virtual void AddItem(DtoProduct product, int quantity)
+        public virtual void AddItem(DtoProductDetail product, int quantity)
         {
             CartLine line = lineCollection.Where(p => p.Product.Id == product.Id).FirstOrDefault();
             if (line == null)
@@ -25,7 +25,7 @@ namespace Shop.Core.Domain.Carts
             }
         }
 
-        public virtual void RemoveLine(DtoProduct product, int quantity)
+        public virtual void RemoveLine(DtoProductDetail product)
         {
             lineCollection.RemoveAll(l => l.Product.Id == product.Id);
         }

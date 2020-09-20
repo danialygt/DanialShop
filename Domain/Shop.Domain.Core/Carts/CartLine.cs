@@ -9,7 +9,7 @@ namespace Shop.Core.Domain.Carts
     public class CartLine
     {
         public int CartLineId { get; set; }
-        public DtoProduct Product { get; set; }
+        public DtoProductDetail Product { get; set; }
         public int Quantity { get; set; }
 
 

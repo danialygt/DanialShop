@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Shop.Core.Domain.Categories.Entities;
+using Shop.Core.Domain.Masters.Dto;
 using Shop.Core.Domain.Masters.Entities;
 using Shop.Core.Resources.Resources;
 using System.Collections.Generic;
@@ -44,7 +45,7 @@ namespace Shop.EndPoints.WebUI.Areas.Admin.Models.Masters
         public List<IFormFile> Photos { get; set; }
 
 
-        public List<Master> Masters { get; set; }
+        public List<DtoMaster> Masters { get; set; }
         public List<Category> Categories { get; set; }
 
 
@@ -64,7 +65,7 @@ namespace Shop.EndPoints.WebUI.Areas.Admin.Models.Masters
             Masters.Select(c => new SelectListItem
             {
                 Value = c.Id.ToString(),
-                Text = $"{c.FirstName} {c.LastName}"
+                Text = c.Name
             }).ToList();
             return result;
         }

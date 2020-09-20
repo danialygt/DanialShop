@@ -13,7 +13,7 @@ using Shop.Framework.Queries;
 using Shop.Framework.Resources;
 using Shop.Framework.Web;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace Shop.EndPoints.WebUI.Controllers
 {
@@ -38,7 +38,6 @@ namespace Shop.EndPoints.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                
                 var command = new CheckOutCommand
                 {
                     Address = model.Address,

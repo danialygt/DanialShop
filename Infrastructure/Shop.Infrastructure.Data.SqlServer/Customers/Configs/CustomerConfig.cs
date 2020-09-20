@@ -14,6 +14,10 @@ namespace Shop.Infrastructure.Data.SqlServer.Customers.Configs
             builder.Property(c => c.FirstName).HasMaxLength(50).IsRequired();
             builder.Property(c => c.LastName).HasMaxLength(50).IsRequired();
             builder.Property(c => c.NationalCode).HasMaxLength(10).IsRequired();
+            builder.Property(c => c.Provience).HasMaxLength(50);
+            builder.Property(c => c.City).HasMaxLength(50);
+            builder.Property(c => c.Phone).HasMaxLength(20);
+            builder.Property(c => c.Address).HasMaxLength(256);
 
         }
     }

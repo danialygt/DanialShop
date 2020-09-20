@@ -11,6 +11,7 @@ namespace Shop.Infrastructure.Data.SqlServer.Orders.Repositorires
         {
             _shopDbContext = shopDbContext;
         }
+
         public void Add(Order order)
         {
             _shopDbContext.Orders.Add(order);

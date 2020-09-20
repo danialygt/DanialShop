@@ -11,7 +11,7 @@ namespace Shop.Infrastructure.Data.SqlServer.Orders.Configs
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {
-
+            builder.Property(c => c.PaymentId).HasMaxLength(256);
         }
     }
 }
