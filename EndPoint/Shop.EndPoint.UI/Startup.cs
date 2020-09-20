@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +10,8 @@ using Shop.Core.ApplicationService.Categories.Commands;
 using Shop.Core.ApplicationService.Categories.Queries;
 using Shop.Core.ApplicationService.Masters.Commands;
 using Shop.Core.ApplicationService.Masters.Queries;
+using Shop.Core.ApplicationService.Orders.Commands;
+using Shop.Core.ApplicationService.Orders.Queries;
 using Shop.Core.Domain.Categories.Commands;
 using Shop.Core.Domain.Categories.Entities;
 using Shop.Core.Domain.Categories.Queries;
@@ -17,13 +20,19 @@ using Shop.Core.Domain.Masters.Commands;
 using Shop.Core.Domain.Masters.Entities;
 using Shop.Core.Domain.Masters.Queries;
 using Shop.Core.Domain.Masters.Repositories;
+using Shop.Core.Domain.Orders.Commands;
+using Shop.Core.Domain.Orders.Entities;
+using Shop.Core.Domain.Orders.Queries;
+using Shop.Core.Domain.Orders.Repositories;
 using Shop.Core.Resources.Resources;
+using Shop.EndPoints.WebUI.Models.Carts;
 using Shop.Framework.Commands;
 using Shop.Framework.Queries;
 using Shop.Framework.Resources;
 using Shop.Infrastructure.Data.SqlServer;
 using Shop.Infrastructure.Data.SqlServer.Categories.Repositories;
 using Shop.Infrastructure.Data.SqlServer.Masters.Repositories;
+using Shop.Infrastructure.Data.SqlServer.Orders.Repositorires;
 using System.Collections.Generic;
 
 namespace Shop.EndPoints.WebUI
@@ -52,6 +61,25 @@ namespace Shop.EndPoints.WebUI
                     options.DataAnnotationLocalizerProvider = (type, factory) =>
                         factory.Create(typeof(SharedResource));
                 });
+
+
+            // acctive session
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sp => SessionCart.GetCart(sp));
+
+            // Order Services
+            services.AddTransient<IOrderQueryRepository, OrderQueryRepository>();
+            services.AddTransient<IQueryHandler<GetByIdOrderQuery, Order>, OrderByIdQueryHandler>();
+
+            //services.AddTransient<PaymentService, PayIrPaymentService>();
+
+            services.AddTransient<IOrderCommandRepository, OrderCommandRepository>();
+            services.AddTransient<CommandHandler<CheckOutCommand>, CheckOutCommandHandler>();
+            //services.AddTransient<CommandHandler<SetTransactionCommand>, SetTransactionCommandHandler>();
+            //services.AddTransient<CommandHandler<SetPaymentDoneCommand>, SetPaymentDoneCommandHandler>();
+
 
 
             // add database
@@ -106,6 +134,8 @@ namespace Shop.EndPoints.WebUI
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 

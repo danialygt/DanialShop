@@ -7,6 +7,6 @@ namespace Shop.Core.Domain.Masters.Queries
 {
     public class GetByIdMasterProductQuery:IQuery
     {
-        public int productId { get; set; }
+        public int ProductId { get; set; }
     }
 }

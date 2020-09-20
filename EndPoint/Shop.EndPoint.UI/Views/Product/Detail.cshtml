@@ -100,8 +100,8 @@
                         <form id="@Model.Id" asp-action="AddToCart"
                               asp-controller="Cart" method="post">
                             <input type="hidden" name="productId" value="@Model.Id" />
-                            @*<input type="hidden" name="returnUrl"
-                                   value="@ViewContext.HttpContext.Request.PathAndQuery()" />*@
+                           <input type="hidden" name="returnUrl"
+                                   value="@ViewContext.HttpContext.Request.PathAndQuery()" />
                             <button type="submit"
                                     class="btn btn-success btn-sm d-flex align-items-center">
                                 <span class="mdi mdi-cart-plus mdi-18px ml-2"></span>

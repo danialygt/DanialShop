@@ -28,7 +28,7 @@ namespace Shop.EndPoints.WebUI.Controllers
         public IActionResult Detail(int id)
         {
 
-            var product = _queryDispatcher.Dispatch<MasterProduct>(new GetByIdMasterProductQuery() { productId = id });
+            var product = _queryDispatcher.Dispatch<MasterProduct>(new GetByIdMasterProductQuery() { ProductId = id });
             if (product != null)
             {
                 return View(product);

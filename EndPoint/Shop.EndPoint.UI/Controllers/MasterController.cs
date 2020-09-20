@@ -22,7 +22,7 @@ namespace Shop.EndPoints.WebUI.Controllers
         public IActionResult List()
         {
             var masterCollection = _queryDispatcher.Dispatch<List<Master>>(new GetAllMasterQuery());
-            if(masterCollection != null)
+            if (masterCollection != null)
             {
                 return View(masterCollection);
             }

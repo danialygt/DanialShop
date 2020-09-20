@@ -18,7 +18,7 @@ namespace Shop.Core.ApplicationService.Masters.Queries
 
         public MasterProduct Handle(GetByIdMasterProductQuery query)
         {
-            return _masterProductQueryRepository.GetById(query.productId);
+            return _masterProductQueryRepository.GetById(query.ProductId);
         }
     }
 }
