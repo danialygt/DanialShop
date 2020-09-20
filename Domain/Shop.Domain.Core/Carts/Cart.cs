@@ -1,4 +1,5 @@
-﻿using Shop.Core.Domain.Masters.Entities;
+﻿using Shop.Core.Domain.Masters.Dto;
+using Shop.Core.Domain.Masters.Entities;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,7 +8,7 @@ namespace Shop.Core.Domain.Carts
     public class Cart
     {
         private List<CartLine> lineCollection = new List<CartLine>();
-        public virtual void AddItem(MasterProduct product, int quantity)
+        public virtual void AddItem(DtoProduct product, int quantity)
         {
             CartLine line = lineCollection.Where(p => p.Product.Id == product.Id).FirstOrDefault();
             if (line == null)
@@ -24,7 +25,7 @@ namespace Shop.Core.Domain.Carts
             }
         }
 
-        public virtual void RemoveLine(MasterProduct product, int quantity)
+        public virtual void RemoveLine(DtoProduct product, int quantity)
         {
             lineCollection.RemoveAll(l => l.Product.Id == product.Id);
         }

@@ -102,8 +102,9 @@ namespace Shop.Core.Resources.Resources
 
 
         public const string NotFound = nameof(NotFound);
+        public const string Rial = nameof(Rial);
 
-        
+
 
     }
 }

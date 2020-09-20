@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Shop.Core.ApplicationService.Masters.Queries
 {
-    public class GetAllMasterQueryHandler : IQueryHandler<GetAllMasterQuery, List<DtoGetAllMaster>>
+    public class GetAllMasterQueryHandler : IQueryHandler<GetAllMasterQuery, List<DtoMaster>>
     {
         private readonly IMasterQueryRepository _masterQueryRepository;
 
@@ -16,7 +16,7 @@ namespace Shop.Core.ApplicationService.Masters.Queries
             _masterQueryRepository = masterQueryRepository;
         }
 
-        public List<DtoGetAllMaster> Handle(GetAllMasterQuery query)
+        public List<DtoMaster> Handle(GetAllMasterQuery query)
         {
             return _masterQueryRepository.GetAll();
         }

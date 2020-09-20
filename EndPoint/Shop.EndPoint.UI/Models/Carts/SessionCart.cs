@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Shop.Core.Domain.Carts;
+using Shop.Core.Domain.Masters.Dto;
 using Shop.Core.Domain.Masters.Entities;
 using Shop.EndPoints.WebUI.Infrastructures;
 using System;
@@ -25,14 +26,14 @@ namespace Shop.EndPoints.WebUI.Models.Carts
 
 
 
-        public override void AddItem(MasterProduct product, int quantity)
+        public override void AddItem(DtoProduct product, int quantity)
         {
             base.AddItem(product, quantity);
             session.SetJson("Cart", this);
 
         }
 
-        public override void RemoveLine(MasterProduct product, int quantity)
+        public override void RemoveLine(DtoProduct product, int quantity)
         {
             base.RemoveLine(product, quantity);
             session.SetJson("Cart", this);

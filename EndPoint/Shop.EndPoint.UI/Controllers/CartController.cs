@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Shop.Core.Domain.Carts;
+using Shop.Core.Domain.Masters.Dto;
 using Shop.Core.Domain.Masters.Entities;
 using Shop.Core.Domain.Masters.Queries;
 using Shop.EndPoints.WebUI.Models.Carts;
@@ -40,7 +41,7 @@ namespace Shop.EndPoints.WebUI.Controllers
         [HttpPost]
         public RedirectToActionResult AddToCart (int productId, string retutnUrl)
         {
-            var product = _queryDispatcher.Dispatch<MasterProduct>(new GetByIdMasterProductQuery() { ProductId = productId});
+            var product = _queryDispatcher.Dispatch<DtoProduct>(new GetByIdMasterProductQuery() { ProductId = productId});
             if (product != null)
             {
                 _cart.AddItem(product, 1);

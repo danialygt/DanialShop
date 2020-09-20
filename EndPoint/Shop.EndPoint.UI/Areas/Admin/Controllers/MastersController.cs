@@ -28,7 +28,7 @@ namespace Shop.EndPoints.WebUI.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var allMaster = _queryDispatcher.Dispatch<List<DtoGetAllMaster>>(new GetAllMasterQuery());
+            var allMaster = _queryDispatcher.Dispatch<List<DtoMaster>>(new GetAllMasterQuery());
             return View(allMaster);
         }
 

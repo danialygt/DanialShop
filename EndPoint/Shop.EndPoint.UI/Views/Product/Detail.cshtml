@@ -1,5 +1,5 @@
 ﻿@inject IResourceManager _resourceManager
-@model MasterProduct
+@model DtoProductDetail
 @{
     ViewData["Title"] = @_resourceManager[SharedResource.ProductDetails];
     
@@ -49,10 +49,10 @@
                 <div id="carouselExampleIndicators" class="carousel slide d-flex align-items-center" data-ride="carousel">
                     <div class="carousel-inner align-items-center justify-content-center">
                         @{int cntRows = 0; }
-                        @foreach (var imgUrl in Model.Photos)
+                        @foreach (var imgUrl in Model.PhotosUrl)
                         {
                             <div class="carousel-item @(cntRows==0? "active" : "")">
-                                <img class="d-block w-50 " src="@imgUrl.Url">
+                                <img class="d-block w-50 " src="@imgUrl">
                             </div>
                             cntRows += 1;
                         }
@@ -60,7 +60,7 @@
                     </div>
                     <ol class="carousel-indicators">
                         @{int cnt = 0; }
-                        @foreach (var imgUrl in Model.Photos)
+                        @foreach (var imgUrl in Model.PhotosUrl)
                         {
                             <li data-target="#carouselExampleIndicators" data-slide-to="@cnt" class="@(cnt ==0 ? "active" :"")"></li>
                             cnt = cnt + 1;
@@ -82,18 +82,18 @@
                         <h5 class="mb-1">
                             @Model.Name
                         </h5>
-                        <div class="text-muted d-block"><small class="ml-2">@_resourceManager[SharedResource.Master]</small><a asp-controller="Master" asp-action="Detail" asp-route-id="@Model.MasterId">@Model.Master.FirstName @Model.Master.LastName</a></div>
+                        <div class="text-muted d-block"><small class="ml-2">@_resourceManager[SharedResource.Master]</small><a asp-controller="Master" asp-action="Detail" asp-route-id="@Model.MasterId">@Model.MasterName</a></div>
                     </div>
                     <div class="mb-3">
                         @_resourceManager[SharedResource.CategoryName]:
-                        @Model.Category.Name
+                        @Model.CategoryName
                     </div>
                     <p class="text-justify text-muted">
                         @Html.Raw(@Model.Description)
                     </p>
                     <div class="d-flex flex-column align-items-center justify-content-between mt-5">
                         <div class="d-flex align-items-center mb-2">
-                            <h5 class="font-weight-bold ml-2">@Model.Price <small class="text-muted">ریال</small></h5>
+                            <h5 class="font-weight-bold ml-2">@Model.Price <small class="text-muted">@_resourceManager[SharedResource.Rial]</small></h5>
                             <del class="text-muted">@Model.Discount</del>
                         </div>
 

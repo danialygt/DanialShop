@@ -95,7 +95,7 @@ namespace Shop.EndPoints.WebUI
             services.AddTransient<IMasterCommandRepository, MasterCommandRepository>();
             services.AddTransient<CommandHandler<AddMasterCommand>, AddMasterCommandHandler>();
             services.AddTransient<IMasterQueryRepository, MasterQueryRepository>();
-            services.AddTransient<IQueryHandler<GetAllMasterQuery, List<DtoGetAllMaster>>, GetAllMasterQueryHandler>();
+            services.AddTransient<IQueryHandler<GetAllMasterQuery, List<DtoMaster>>, GetAllMasterQueryHandler>();
             services.AddTransient<IQueryHandler<GetByIdMasterQuery, DtoMasterDetail>, GetByIdMasterQueryHandler>();
 
 
@@ -114,8 +114,8 @@ namespace Shop.EndPoints.WebUI
             services.AddTransient<IMasterProductCommandRepository, MasterProductCommandRepository>();
             services.AddTransient<CommandHandler<AddMasterProductCommand>, AddMasterProductCommandHandler>();
             services.AddTransient<IMasterProductQueryRepository, MasterProductQueryRepository>();
-            services.AddTransient<IQueryHandler<GetAllMasterProductQuery, List<MasterProduct>>, GetAllMasterProductQueryHandler>();
-            services.AddTransient<IQueryHandler<GetByIdMasterProductQuery, MasterProduct>, GetByIdMasterProductQueryHandler>();
+            services.AddTransient<IQueryHandler<GetAllMasterProductQuery, List<DtoProduct>>, GetAllMasterProductQueryHandler>();
+            services.AddTransient<IQueryHandler<GetByIdMasterProductQuery, DtoProductDetail>, GetByIdMasterProductQueryHandler>();
 
 
 

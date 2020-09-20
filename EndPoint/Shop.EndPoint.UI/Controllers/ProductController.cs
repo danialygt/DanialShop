@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Shop.Core.Domain.Masters.Dto;
 using Shop.Core.Domain.Masters.Entities;
 using Shop.Core.Domain.Masters.Queries;
 using Shop.Framework.Commands;
@@ -15,9 +16,9 @@ namespace Shop.EndPoints.WebUI.Controllers
         {
         }
 
-        public IActionResult list()
+        public IActionResult List()
         {
-            var allproducts = _queryDispatcher.Dispatch<List<MasterProduct>>(new GetAllMasterProductQuery());
+            var allproducts = _queryDispatcher.Dispatch<List<DtoProduct>>(new GetAllMasterProductQuery());
             if(allproducts != null)
             {
                 return View(allproducts);
@@ -28,7 +29,7 @@ namespace Shop.EndPoints.WebUI.Controllers
         public IActionResult Detail(int id)
         {
 
-            var product = _queryDispatcher.Dispatch<MasterProduct>(new GetByIdMasterProductQuery() { ProductId = id });
+            var product = _queryDispatcher.Dispatch<DtoProductDetail>(new GetByIdMasterProductQuery() { ProductId = id });
             if (product != null)
             {
                 return View(product);

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Shop.Core.Domain.Masters.Dto;
 using Shop.Core.Domain.Masters.Entities;
 using Shop.Core.Domain.Masters.Repositories;
 using System.Collections.Generic;
@@ -15,18 +16,42 @@ namespace Shop.Infrastructure.Data.SqlServer.Masters.Repositories
             _shopDbContext = shopDbContext;
         }
 
-        public MasterProduct GetById(long id)
+        public DtoProductDetail GetById(long id)
         {
             // benazar sarbar ziadi dashte bashe!!! chon kole rabete haro load mikone bad select mikone!
             return _shopDbContext.MasterProducts.AsNoTracking()
                 .Include(c => c.Master).Include(c => c.Photos).Include(c => c.Category)
+                .Select(c => new DtoProductDetail
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    CategoryName = c.Category.Name,
+                    Price = c.Price,
+                    Discount = c.Discount,
+                    Description = c.Description,
+                    MasterName = $"{c.Master.FirstName} {c.Master.LastName}",
+                    MasterId = c.MasterId,
+                    PhotosUrl = c.Photos.Select(c => c.Url).ToList()
+                })
                 .FirstOrDefault(c => c.Id == id);
         }
 
-        public List<MasterProduct> GetAll()
+        public List<DtoProduct> GetAll()
         {
             return _shopDbContext.MasterProducts.AsNoTracking()
                 .Include(c => c.Master).Include(c => c.Photos).Include(c => c.Category)
+                .Select(c => new DtoProduct
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    ShortDescription = c.ShortDescription,
+                    MasterId = c.MasterId,
+                    Price = c.Price,
+                    Discount = c.Discount,
+                    CategoryName = c.Category.Name,
+                    MasterName = $"{c.Master.FirstName} {c.Master.LastName}",
+                    PhotoUrl = c.Photos.FirstOrDefault().Url
+                })
                 .ToList();
         }
 

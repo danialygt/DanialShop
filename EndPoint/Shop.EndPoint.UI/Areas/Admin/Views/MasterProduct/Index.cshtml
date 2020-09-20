@@ -1,4 +1,4 @@
-﻿@model List<Shop.Core.Domain.Masters.Entities.MasterProduct>
+﻿@model List<DtoProduct>
 @inject IResourceManager _resourceManager
 @{
     ViewData["Title"] = _resourceManager[SharedResource.MasterProducts];
@@ -31,8 +31,8 @@
                         {
                             <tr>
                                 <td>@item.Name</td>
-                                <td>@item.Master.FirstName @item.Master.LastName</td>
-                                <td>@item.Category.Name</td>
+                                <td>@item.MasterName</td>
+                                <td>@item.CategoryName</td>
                                 <td>@item.Price</td>
                                 <td>@item.Discount</td>
                                 <td>@item.ShortDescription</td>

@@ -348,6 +348,9 @@
   <data name="Required" xml:space="preserve">
     <value>برای {0} مقدار لازم است</value>
   </data>
+  <data name="Rial" xml:space="preserve">
+    <value>ریال</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>ثبت</value>
   </data>

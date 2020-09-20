@@ -17,11 +17,11 @@ namespace Shop.Infrastructure.Data.SqlServer.Masters.Repositories
         }
 
 
-        public List<DtoGetAllMaster> GetAll()
+        public List<DtoMaster> GetAll()
         {
             return _shopDbContext.Masters.AsNoTracking()
                 .Include(c=>c.Photo).Include(c => c.MasterProducts)
-                .Select(c=> new DtoGetAllMaster
+                .Select(c=> new DtoMaster
                 {
                     Id = c.Id,
                     Name = $"{c.FirstName} {c.LastName}",

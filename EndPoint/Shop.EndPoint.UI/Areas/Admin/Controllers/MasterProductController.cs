@@ -2,6 +2,7 @@
 using Shop.Core.Domain.Categories.Entities;
 using Shop.Core.Domain.Categories.Queries;
 using Shop.Core.Domain.Masters.Commands;
+using Shop.Core.Domain.Masters.Dto;
 using Shop.Core.Domain.Masters.Entities;
 using Shop.Core.Domain.Masters.Queries;
 using Shop.Core.Domain.Photos.Entities;
@@ -26,7 +27,7 @@ namespace Shop.EndPoints.WebUI.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var allProduct = _queryDispatcher.Dispatch<List<MasterProduct>>(new GetAllMasterProductQuery());
+            var allProduct = _queryDispatcher.Dispatch<List<DtoProduct>>(new GetAllMasterProductQuery());
             return View(allProduct);
         }
 

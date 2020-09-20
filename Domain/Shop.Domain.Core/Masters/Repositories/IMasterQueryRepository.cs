@@ -8,7 +8,7 @@ namespace Shop.Core.Domain.Masters.Repositories
 {
     public interface IMasterQueryRepository
     {
-        List<DtoGetAllMaster> GetAll();
+        List<DtoMaster> GetAll();
 
         DtoMasterDetail GetById(long id);
 
