@@ -19,17 +19,25 @@ namespace Shop.EndPoints.WebUI.Controllers
 
 
 
-        //public IActionResult List()
-        //{
-        //    var masterCollection = _queryDispatcher.Dispatch<List<Master>>(new GetAllMasterQuery());
-        //    return View(masterCollection);
-        //}
+        public IActionResult List()
+        {
+            var masterCollection = _queryDispatcher.Dispatch<List<Master>>(new GetAllMasterQuery());
+            if(masterCollection != null)
+            {
+                return View(masterCollection);
+            }
+            return NotFound();
+        }
 
-        //public IActionResult Detail(long id)
-        //{
-        //    var master = _queryDispatcher.Dispatch<Master>(new GetByIdMasterQuery { MasterId = id });
-        //    return View(master);
-        //}
+        public IActionResult Detail(long id)
+        {
+            var master = _queryDispatcher.Dispatch<Master>(new GetByIdMasterQuery { MasterId = id });
+            if (master != null)
+            {
+                return View(master);
+            }
+            return NotFound();
+        }
 
 
 

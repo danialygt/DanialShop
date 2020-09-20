@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop.Core.Domain.Masters.Entities;
 using Shop.Core.Domain.Masters.Queries;
-using Shop.Core.Domain.Masters.Repositories;
 using Shop.Framework.Commands;
 using Shop.Framework.Queries;
 using Shop.Framework.Resources;
@@ -16,19 +15,26 @@ namespace Shop.EndPoints.WebUI.Controllers
         {
         }
 
-        //public IActionResult List()
-        //{
+        public IActionResult list()
+        {
+            var allproducts = _queryDispatcher.Dispatch<List<MasterProduct>>(new GetAllMasterProductQuery());
+            if(allproducts != null)
+            {
+                return View(allproducts);
+            }
+            return NotFound();
+        }
 
-        //    var allProducts = _queryDispatcher.Dispatch<List<MasterProduct>>(new GetAllMasterProductQuery());
-        //    return View(allProducts);
-        //}
+        public IActionResult Detail(int id)
+        {
 
-        //public IActionResult Detail(int id)
-        //{
-
-        //    var product = _queryDispatcher.Dispatch<MasterProduct>(new GetByIdMasterProductQuery() { productId = id });
-        //    return View(product);
-        //}
+            var product = _queryDispatcher.Dispatch<MasterProduct>(new GetByIdMasterProductQuery() { productId = id });
+            if (product != null)
+            {
+                return View(product);
+            }
+            return NotFound();
+        }
 
         //public IActionResult Buy(int id)
         //{

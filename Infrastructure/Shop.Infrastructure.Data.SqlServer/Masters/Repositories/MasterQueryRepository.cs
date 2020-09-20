@@ -26,7 +26,8 @@ namespace Shop.Infrastructure.Data.SqlServer.Masters.Repositories
         public Master GetById(long id)
         {
             return _shopDbContext.Masters.AsNoTracking()
-                .Include(c => c.Photo).Include(c => c.MasterProducts).FirstOrDefault(c => c.Id == id);
+                .Include(c => c.Photo).Include(c => c.MasterProducts).ThenInclude(c=>c.Photos)
+                .FirstOrDefault(c => c.Id == id);
         }
 
 
