@@ -1,18 +1,17 @@
 ﻿@inject IResourceManager _resourceManager
-@model Master
+@model DtoMasterDetail
 @{
-        var masterFullName = $"{Model.FirstName} {Model.LastName}";
-    ViewData["Title"] = masterFullName;
+    ViewData["Title"] = Model.Name;
 }
 
 
     <div class="container py-4">
-        <h4 class="mb-5">@string.Format("{0}: {1}", _resourceManager[SharedResource.MasterDetails], masterFullName)</h4>
+        <h4 class="mb-5">@string.Format("{0}: {1}", _resourceManager[SharedResource.MasterDetails], Model.Name)</h4>
 
         <div class="row">
             <div class="col-md-4 text-center">
-                <img src="@Model.Photo.Url" class="mb-4 img-fluid" />
-                <h6>@masterFullName</h6>
+                <img src="@Model.PhotoUrl" class="mb-4 img-fluid" />
+                <h6>@Model.Name</h6>
             </div>
             <div class="col-md-8">
                 <p class="text-justify">@Html.Raw(@Model.Description)</p>
@@ -44,7 +43,7 @@
                             <p class="card-text text-justify text-muted">@Html.Raw(@dtoProduct.ShortDescription)</p>
                             <div class="d-flex justify-content-between align-items-center mt-auto">
                                 <a class="btn btn-sm btn-info text-white" asp-area="" asp-controller="Product" asp-action="Detail" asp-route-id="@dtoProduct.Id">@_resourceManager[SharedResource.BtnViewText]</a>
-                                <a asp-area="" asp-controller="Master" asp-action="Detail" asp-route-id="@dtoProduct.MasterId"><small class="text-muted">@dtoProduct.Master.FirstName @dtoProduct.Master.LastName</small></a>
+                                @*<a asp-area="" asp-controller="Master" asp-action="Detail" asp-route-id="@dtoProduct.MasterId"><small class="text-muted">@dtoProduct.MasterName</small></a>*@
                             </div>
                         </div>
                     </div>

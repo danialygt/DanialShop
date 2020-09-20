@@ -1,4 +1,4 @@
-﻿@model List<Shop.Core.Domain.Masters.Entities.Master>
+﻿@model List<DtoGetAllMaster>
 @inject IResourceManager _resourceManager
 @{
     ViewData["Title"] = _resourceManager[SharedResource.Masters];
@@ -21,15 +21,16 @@
                         <div class="bg-white rounded border p-2 shadow-sm mb-2">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <a><img class="img-fluid" src="@item.Photo.Url" /></a>
+                                    <a><img class="img-fluid" src="@item.PhotoUrl" /></a>
                                 </div>
                                 <div class="col-sm-9">
                                     <a>
-                                        <h5>@item.FirstName @item.LastName</h5>
+                                        <h5>@item.Name</h5>
                                     </a>
                                     <p class="text-justify text-muted">
                                         @Html.Raw(@item.ShortDescription)
                                     </p>
+                                    
                                 </div>
                             </div>
                         </div>

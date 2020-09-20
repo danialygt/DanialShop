@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Shop.Core.Domain.Masters.Dto;
 using Shop.Core.Domain.Masters.Entities;
 using Shop.Core.Domain.Masters.Repositories;
 using System.Collections.Generic;
@@ -16,21 +17,34 @@ namespace Shop.Infrastructure.Data.SqlServer.Masters.Repositories
         }
 
 
-
-        public List<Master> GetAll()
+        public List<DtoGetAllMaster> GetAll()
         {
             return _shopDbContext.Masters.AsNoTracking()
-                .Include(c=>c.Photo).Include(c => c.MasterProducts).ToList();
+                .Include(c=>c.Photo).Include(c => c.MasterProducts)
+                .Select(c=> new DtoGetAllMaster
+                {
+                    Id = c.Id,
+                    Name = $"{c.FirstName} {c.LastName}",
+                    PhotoUrl = c.Photo.Url,
+                    ShortDescription = c.ShortDescription,
+                    NumberOfProducts = c.MasterProducts.Count
+                }).ToList();
         }
 
-        public Master GetById(long id)
+        public DtoMasterDetail GetById(long id)
         {
             return _shopDbContext.Masters.AsNoTracking()
                 .Include(c => c.Photo).Include(c => c.MasterProducts).ThenInclude(c=>c.Photos)
-                .FirstOrDefault(c => c.Id == id);
+                .Select(c => new DtoMasterDetail
+                {
+                    Id = c.Id,
+                    Name = $"{c.FirstName} {c.LastName}",
+                    PhotoUrl = c.Photo.Url,
+                    Description = c.Description,
+                    MasterProducts = c.MasterProducts                    
+                }).FirstOrDefault(c => c.Id == id);
         }
 
 
-  
     }
 }

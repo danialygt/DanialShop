@@ -1,4 +1,5 @@
-﻿using Shop.Core.Domain.Masters.Entities;
+﻿using Shop.Core.Domain.Masters.Dto;
+using Shop.Core.Domain.Masters.Entities;
 using Shop.Core.Domain.Masters.Queries;
 using Shop.Core.Domain.Masters.Repositories;
 using Shop.Framework.Queries;
@@ -6,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Shop.Core.ApplicationService.Masters.Queries
 {
-    public class GetAllMasterQueryHandler : IQueryHandler<GetAllMasterQuery, List<Master>>
+    public class GetAllMasterQueryHandler : IQueryHandler<GetAllMasterQuery, List<DtoGetAllMaster>>
     {
         private readonly IMasterQueryRepository _masterQueryRepository;
 
@@ -15,7 +16,7 @@ namespace Shop.Core.ApplicationService.Masters.Queries
             _masterQueryRepository = masterQueryRepository;
         }
 
-        public List<Master> Handle(GetAllMasterQuery query)
+        public List<DtoGetAllMaster> Handle(GetAllMasterQuery query)
         {
             return _masterQueryRepository.GetAll();
         }

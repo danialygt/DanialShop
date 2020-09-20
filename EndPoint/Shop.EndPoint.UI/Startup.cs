@@ -17,6 +17,7 @@ using Shop.Core.Domain.Categories.Entities;
 using Shop.Core.Domain.Categories.Queries;
 using Shop.Core.Domain.Categories.Repositories;
 using Shop.Core.Domain.Masters.Commands;
+using Shop.Core.Domain.Masters.Dto;
 using Shop.Core.Domain.Masters.Entities;
 using Shop.Core.Domain.Masters.Queries;
 using Shop.Core.Domain.Masters.Repositories;
@@ -94,8 +95,8 @@ namespace Shop.EndPoints.WebUI
             services.AddTransient<IMasterCommandRepository, MasterCommandRepository>();
             services.AddTransient<CommandHandler<AddMasterCommand>, AddMasterCommandHandler>();
             services.AddTransient<IMasterQueryRepository, MasterQueryRepository>();
-            services.AddTransient<IQueryHandler<GetAllMasterQuery, List<Master>>, GetAllMasterQueryHandler>();
-            services.AddTransient<IQueryHandler<GetByIdMasterQuery, Master>, GetByIdMasterQueryHandler>();
+            services.AddTransient<IQueryHandler<GetAllMasterQuery, List<DtoGetAllMaster>>, GetAllMasterQueryHandler>();
+            services.AddTransient<IQueryHandler<GetByIdMasterQuery, DtoMasterDetail>, GetByIdMasterQueryHandler>();
 
 
 

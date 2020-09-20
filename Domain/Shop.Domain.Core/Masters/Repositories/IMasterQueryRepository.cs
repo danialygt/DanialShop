@@ -1,4 +1,5 @@
-﻿using Shop.Core.Domain.Masters.Entities;
+﻿using Shop.Core.Domain.Masters.Dto;
+using Shop.Core.Domain.Masters.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,9 +8,9 @@ namespace Shop.Core.Domain.Masters.Repositories
 {
     public interface IMasterQueryRepository
     {
-        List<Master> GetAll();
+        List<DtoGetAllMaster> GetAll();
 
-        Master GetById(long id);
+        DtoMasterDetail GetById(long id);
 
     }
 }

@@ -1,5 +1,5 @@
 ﻿@inject IResourceManager _resourceManager
-@model List<Master>
+@model List<DtoGetAllMaster>
 
 
 @{
@@ -15,12 +15,12 @@
             <div class="col-xl-3 col-lg-4 col-md-6 mb-3 px-2">
                 <div class="card shadow-sm h-100">
                     <a asp-area="" asp-controller="Master" asp-action="Detail" asp-route-id="@item.Id">
-                        <img src="@item.Photo.Url" class="card-img-top img-fluid mh-100" />
+                        <img src="@item.PhotoUrl" class="card-img-top img-fluid mh-100" />
                     </a>
                     <div class="card-body d-flex flex-column">
                         <h6 class="card-text text-truncate">
                             <a class="text-primary" asp-area="" asp-controller="Master" asp-action="Detail" asp-route-id="@item.Id">
-                                @item.FirstName @item.LastName
+                                @item.Name
 
                             </a>
                         </h6>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="bg-light p-3">
                         <small class="text-muted">@_resourceManager[SharedResource.CountProducts]</small>
-                        <small class="text-muted">@item.MasterProducts.Count</small>
+                        <small class="text-muted">@item.NumberOfProducts</small>
                     </div>
                 </div>
             </div>

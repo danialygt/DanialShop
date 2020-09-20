@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Shop.Core.Domain.Masters.Commands;
+using Shop.Core.Domain.Masters.Dto;
 using Shop.Core.Domain.Masters.Entities;
 using Shop.Core.Domain.Masters.Queries;
 using Shop.EndPoints.WebUI.Areas.Admin.Models.Masters;
@@ -27,7 +28,7 @@ namespace Shop.EndPoints.WebUI.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var allMaster = _queryDispatcher.Dispatch<List<Master>>(new GetAllMasterQuery());
+            var allMaster = _queryDispatcher.Dispatch<List<DtoGetAllMaster>>(new GetAllMasterQuery());
             return View(allMaster);
         }
 
