@@ -13,4 +13,7 @@ namespace Shop.Core.Domain.Payments.Entities
         public long PaymentValue { get; set; }
         public DateTime PaymentDate { get; set; }
     }
+
+
+
 }

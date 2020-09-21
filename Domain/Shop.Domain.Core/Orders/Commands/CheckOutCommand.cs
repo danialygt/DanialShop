@@ -20,5 +20,6 @@ namespace Shop.Core.Domain.Orders.Commands
         public Cart Cart { get; set; }
         public long OrderId { get; set; }
     }
-   
+
+
 }
